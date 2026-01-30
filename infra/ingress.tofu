@@ -27,4 +27,10 @@ resource "kubernetes_ingress_v1" "demo_ingress" {
       }
     }
   }
+
+  depends_on = [
+    kubernetes_service.demo_service,
+    kubernetes_deployment.demo_app,
+    helm_release.nginx_ingress
+  ]
 }
